@@ -16,12 +16,14 @@ const noteInstance = axios.create({
 
 export const fetchNotes = async (
   searchText: string,
-  page: number
+  page: number,
+  tag?: string
 ): Promise<FetchNotesResponse> => {
   const response = await noteInstance.get<FetchNotesResponse>('/notes', {
     params: {
       search: searchText,
       page,
+      tag,
       perPage: 12,
     },
   });

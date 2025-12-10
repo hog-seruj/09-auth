@@ -15,15 +15,21 @@ import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import { fetchNotes } from '@/lib/api';
 
-export default function NotesClient() {
+interface NotesClientProps {
+  tag?: string;
+}
+
+export default function NotesClient({ tag }: NotesClientProps) {
   const [searchText, setSearchText] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTextDebounce] = useDebounce(searchText, 500);
   const { isModalOpen, openModal, closeModal } = useModalControl();
 
+  console.log(tag);
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['notes', searchTextDebounce, currentPage],
-    queryFn: () => fetchNotes(searchTextDebounce, currentPage),
+    queryKey: ['notes', searchTextDebounce, currentPage, tag],
+    queryFn: () => fetchNotes(searchTextDebounce, currentPage, tag),
     placeholderData: keepPreviousData,
   });
 

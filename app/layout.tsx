@@ -1,3 +1,4 @@
+import css from './Home.module.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -22,8 +23,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -32,7 +35,10 @@ export default function RootLayout({
       >
         <TanstackProvider>
           <Header />
-          {children}
+          <main className={css.main}>
+            {children}
+            {modal}
+          </main>
           <Footer />
         </TanstackProvider>
       </body>
