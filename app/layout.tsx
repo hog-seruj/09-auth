@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     title: 'NoteHub — Personal Notes Manager (Next.js Routing Demo)',
     description:
       'A simple Next.js application demonstrating file-based routing and page navigation. The project showcases clean structure, reusable layouts, and deployment on Vercel.',
+    url: `https://08-zustand-kappa-khaki.vercel.app`,
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

@@ -57,7 +57,7 @@ export default function NotesClient({ tag }: NotesClientProps) {
       <Toaster />
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
-      {data && <NoteList notes={data.notes} />}
+      {data?.notes && <NoteList notes={data.notes} />}
     </div>
   );
 }

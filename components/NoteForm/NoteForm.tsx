@@ -38,12 +38,37 @@ export default function NoteForm() {
     },
   });
 
+  const TAGS = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'] as const;
+  type Tag = (typeof TAGS)[number];
+
+  function isTag(value: string): value is Tag {
+    return TAGS.includes(value as Tag);
+  }
+
   const handleSubmit = (formData: FormData) => {
-    const values = {
-      title: formData.get('title'),
-      content: formData.get('content'),
-      tag: formData.get('tag'),
-    } as CreateNoteData;
+    const title = formData.get('title');
+    const content = formData.get('content');
+    const tag = formData.get('tag');
+
+    if (
+      typeof title !== 'string' ||
+      typeof content !== 'string' ||
+      typeof tag !== 'string'
+    ) {
+      toast.error('Invalid form data');
+      return;
+    }
+
+    if (!isTag(tag)) {
+      toast.error('Invalid tag value');
+      return;
+    }
+
+    const values: CreateNoteData = {
+      title,
+      content,
+      tag,
+    };
 
     mutation.mutate(values);
   };
@@ -59,7 +84,7 @@ export default function NoteForm() {
           type="text"
           name="title"
           className={css.input}
-          defaultValue={draft?.title}
+          value={draft?.title}
           onChange={handleChange}
         />
       </div>
@@ -71,7 +96,7 @@ export default function NoteForm() {
           name="content"
           rows={8}
           className={css.textarea}
-          defaultValue={draft?.content}
+          value={draft?.content}
           onChange={handleChange}
         />
       </div>
@@ -82,7 +107,7 @@ export default function NoteForm() {
           id="tag"
           name="tag"
           className={css.select}
-          defaultValue={draft?.tag}
+          value={draft?.tag}
           onChange={handleChange}
         >
           <option value="Todo">Todo</option>
@@ -94,7 +119,11 @@ export default function NoteForm() {
       </div>
 
       <div className={css.actions}>
-        <button onClick={handleCancel} className={css.cancelButton}>
+        <button
+          type="button"
+          onClick={handleCancel}
+          className={css.cancelButton}
+        >
           Cancel
         </button>
         <button type="submit" className={css.submitButton} disabled={false}>
