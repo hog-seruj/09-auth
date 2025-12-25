@@ -1,3 +1,17 @@
+## Notehub project
+
+Project created on NextJS with registration and authorization features.
+
+### Technologies
+- NextJs
+- Axios
+- Zustand
+
+[https://09-auth-delta-sepia.vercel.app/](https://09-auth-delta-sepia.vercel.app/)
+
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
