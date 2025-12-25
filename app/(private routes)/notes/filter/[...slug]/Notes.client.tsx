@@ -10,8 +10,8 @@ import { useDebounce } from 'use-debounce';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '@/components/Loader/Loader';
 import ErrorMessage from '@/components/ErrorMessage/ErrorMessage';
-import { fetchNotes } from '@/lib/api';
-import Link from 'next/link';
+import { fetchNotes } from '@/lib/api/clientApi';
+import Button from '@/components/Button/Button';
 
 interface NotesClientProps {
   tag?: string;
@@ -50,9 +50,9 @@ export default function NotesClient({ tag }: NotesClientProps) {
             onPageChange={setCurrentPage}
           />
         )}
-        <Link className={css.button} href="/notes/action/create">
+        <Button variant="primary" href="/notes/action/create">
           Create note +
-        </Link>
+        </Button>
       </header>
       <Toaster />
       {isError && <ErrorMessage />}

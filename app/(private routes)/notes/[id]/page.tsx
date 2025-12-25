@@ -4,7 +4,7 @@ import {
   dehydrate,
 } from '@tanstack/react-query';
 
-import { fetchNoteById } from '@/lib/api';
+import { fetchNoteByIdServer } from '@/lib/api/serverApi';
 import NoteDetailsClient from './NoteDetails.client';
 import { Metadata } from 'next';
 
@@ -16,7 +16,7 @@ export async function generateMetadata({
   params,
 }: NoteDetailsProps): Promise<Metadata> {
   const { id } = await params;
-  const note = await fetchNoteById(id);
+  const note = await fetchNoteByIdServer(id);
 
   return {
     title: `Note: ${note.title}`,
@@ -24,7 +24,7 @@ export async function generateMetadata({
     openGraph: {
       title: `Note: ${note.title}`,
       description: note.content.slice(0, 100),
-      url: `https://08-zustand-kappa-khaki.vercel.app/notes/${id}`,
+      url: `https://09-auth-delta-sepia.vercel.app/notes/${id}`,
       siteName: 'NoteHub',
       images: [
         {
@@ -45,7 +45,7 @@ async function NoteDetails({ params }: NoteDetailsProps) {
 
   await queryClient.prefetchQuery({
     queryKey: ['note', id],
-    queryFn: () => fetchNoteById(id),
+    queryFn: () => fetchNoteByIdServer(id),
   });
 
   return (

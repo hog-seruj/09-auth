@@ -1,0 +1,108 @@
+.mainContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+.profileCard {
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 32px;
+  text-align: center;
+}
+
+.formTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 8px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--dark-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.usernameWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.input {
+  margin-top: 4px;
+  padding: 4px 12px;
+  font-size: 14px;
+  background-color: #fff;
+  font-family: var(--font-space-mono);
+  border: 3px solid var(--primary-color);
+  border-radius: 4px;
+  resize: none;
+  clip-path: polygon(
+    0px calc(100% - 4px),
+    2px calc(100% - 4px),
+    2px calc(100% - 2px),
+    4px calc(100% - 2px),
+    4px 100%,
+    calc(100% - 4px) 100%,
+    calc(100% - 4px) calc(100% - 2px),
+    calc(100% - 2px) calc(100% - 2px),
+    calc(100% - 2px) calc(100% - 4px),
+    100% calc(100% - 4px),
+    100% 4px,
+    calc(100% - 2px) 4px,
+    calc(100% - 2px) 2px,
+    calc(100% - 4px) 2px,
+    calc(100% - 4px) 0px,
+    4px 0px,
+    4px 2px,
+    2px 2px,
+    2px 4px,
+    0px 4px
+  );
+  transition: all 0.2s ease-in-out;
+}
+
+.input:focus-within {
+  outline: none;
+}
+
+.input:hover {
+  border-color: #e57f3d;
+}
+
+.actions {
+  margin: 0 auto;
+}
